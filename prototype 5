@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Connect</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        header, footer {
+            background-color: #00274d;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #ffc72c;
+        }
+        nav a {
+            color: #00274d;
+            text-decoration: none;
+            padding: 1rem;
+            font-weight: bold;
+        }
+        nav a:hover {
+            background-color: #00274d;
+            color: white;
+        }
+        main {
+            padding: 1rem 2rem;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        .container h2 {
+            color: #00274d;
+        }
+        .container label {
+            display: block;
+            margin: 1rem 0 0.5rem;
+        }
+        .container input, .container textarea, .container select, .container button {
+            width: 100%;
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .container button {
+            background-color: #ffc72c;
+            color: #00274d;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .container button:hover {
+            background-color: #00274d;
+            color: white;
+        }
+        .hidden {
+            display: none;
+        }
+        .job-listing {
+            background: white;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        .job-listing h3 {
+            color: #00274d;
+        }
+        .homepage {
+            text-align: center;
+        }
+        .homepage img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 2rem;
+        }
+        .why-us {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 2rem;
+        }
+        .search-bar {
+            margin-bottom: 2rem;
+        }
+        .search-bar input {
+            width: 80%;
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .search-bar button {
+            padding: 0.5rem 1rem;
+            background-color: #ffc72c;
+            color: #00274d;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .search-bar button:hover {
+            background-color: #00274d;
+            color: white;
+        }
+        .enter-portal {
+            margin-top: 2rem;
+            padding: 1rem 2rem;
+            font-size: 1.5rem;
+            background-color: #ffc72c;
+            color: #00274d;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        .enter-portal:hover {
+            background-color: #00274d;
+            color: white;
+        }
+        .animation-container {
+            margin-top: 2rem;
+            position: relative;
+        }
+        .man-image {
+            width: 200px;
+            height: auto;
+            animation: wave 2s infinite;
+        }
+        @keyframes wave {
+            0%, 100% {
+                transform: rotate(0deg);
+            }
+            25% {
+                transform: rotate(10deg);
+            }
+            75% {
+                transform: rotate(-10deg);
+            }
+        }
+    </style>
+    <script>
+        function toggleUserType() {
+            const userType = document.getElementById("user-type").value;
+            document.getElementById("post-job-section").classList.toggle("hidden", userType !== "official");
+        }
+
+        function showPage(pageId) {
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.add('hidden'));
+            document.getElementById(pageId).classList.remove('hidden');
+        }
+
+        function searchJobs() {
+            const query = document.getElementById("search-query").value.toLowerCase();
+            const jobListings = document.querySelectorAll(".job-listing");
+            jobListings.forEach(job => {
+                const title = job.querySelector("h3").textContent.toLowerCase();
+                if (title.includes(query)) {
+                    job.style.display = "block";
+                } else {
+                    job.style.display = "none";
+                }
+            });
+        }
+
+        function enterPortal() {
+            showPage('login');
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Alliance Academy Guidance Hub</h1>
+    </header>
+    <nav>
+        <a href="#home" onclick="showPage('home')">Home</a>
+        <a href="#login" onclick="showPage('login')">Login</a>
+        <a href="#jobs" onclick="showPage('jobs')">Jobs</a>
+        <a href="#about" onclick="showPage('about')">About Us</a>
+        <a href="#contact" onclick="showPage('contact')">Contact Us</a>
+    </nav>
+    <main>
+        <!-- Homepage with Enter Portal Button and Animation -->
+        <section id="home" class="page homepage">
+            <div class="container">
+                <h2>Welcome to Alliance Academy Guidance Hub</h2>
+                <button class="enter-portal" onclick="enterPortal()">Click here to enter job portal</button>
+                <div class="animation-container">
+                    <img src="https://cdn.pixabay.com/photo/2023/10/04/12/12/businessman-8293645_1280.png" alt="Man with briefcase" class="man-image">
+                </div>
+                <div class="why-us">
+                    <h2>Why Us?</h2>
+                    <p>We provide the best guidance and resources to help you achieve your career goals. Our platform connects job seekers with top employers and offers valuable insights into the job market.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Login Page -->
+        <section id="login" class="page container hidden">
+            <h2>Login</h2>
+            <form onsubmit="event.preventDefault(); toggleUserType();">
+                <label for="username">Username:</label>
+                <input type="text" id="username" required>
+                <label for="password">Password:</label>
+                <input type="password" id="password" required>
+                <label for="user-type">Login as:</label>
+                <select id="user-type" required>
+                    <option value="job-seeker">Job Seeker</option>
+                    <option value="official">Official</option>
+                </select>
+                <button type="submit">Login</button>
+            </form>
+        </section>
+
+        <!-- Post Job Section (Hidden by Default) -->
+        <section id="post-job-section" class="container hidden">
+            <h2>Post a Job</h2>
+            <form>
+                <label for="job-title">Job Title:</label>
+                <input type="text" id="job-title" required>
+                <label for="job-description">Job Description:</label>
+                <textarea id="job-description" rows="4" required></textarea>
+                <label for="job-requirements">Job Requirements:</label>
+                <textarea id="job-requirements" rows="2" required></textarea>
+                <label for="job-location">Location:</label>
+                <input type="text" id="job-location" required>
+                <label for="job-salary">Salary:</label>
+                <input type="text" id="job-salary" required>
+                <button type="submit">Submit Job</button>
+            </form>
+        </section>
+
+        <!-- Jobs Page with Search Bar -->
+        <section id="jobs" class="page container hidden">
+            <h2>Available Jobs</h2>
+            <div class="search-bar">
+                <input type="text" id="search-query" placeholder="Search for jobs...">
+                <button onclick="searchJobs()">Search</button>
+            </div>
+            <div class="job-listing">
+                <h3>Software Engineer Intern</h3>
+                <p><strong>Description:</strong> Assist in developing web applications.</p>
+                <p><strong>Location:</strong> Remote</p>
+                <p><strong>Contact:</strong> futurebusiness@company.com</p>
+            </div>
+            <div class="job-listing">
+                <h3>Graphic Design Assistant</h3>
+                <p><strong>Description:</strong> Create graphics for marketing campaigns.</p>
+                <p><strong>Location:</strong> New York, NY</p>
+                <p><strong>Contact:</strong> graphicdesign@agency.com</p>
+            </div>
+            <div class="job-listing">
+                <h3>Marketing Intern</h3>
+                <p><strong>Description:</strong> Assist in social media and content creation.</p>
+                <p><strong>Location:</strong> Los Angeles, CA</p>
+                <p><strong>Contact:</strong> marketing@company.com</p>
+            </div>
+            <div class="job-listing">
+                <h3>Data Analyst</h3>
+                <p><strong>Description:</strong> Analyze data and create reports.</p>
+                <p><strong>Location:</strong> Chicago, IL</p>
+                <p><strong>Contact:</strong> data@company.com</p>
+            </div>
+        </section>
+
+        <!-- About Us Page -->
+        <section id="about" class="page container hidden">
+            <h2>About Us</h2>
+            <p>Details coming soon.</p>
+        </section>
+
+        <!-- Contact Us Page with Socials -->
+        <section id="contact" class="page container hidden">
+            <h2>Contact Us</h2>
+            <p>Email: <a href="mailto:lalit.thella@gmail.com">lalit.thella@gmail.com</a></p>
+            <p>Phone: <a href="tel:4703332224">470-333-2224</a></p>
+            <p>Instagram: <a href="https://instagram.com/lalit_thella">@lalit_thella</a></p>
+            <h3>These are our socials:</h3>
+            <p>Facebook: <a href="https://facebook.com/allianceacademy">Alliance Academy</a></p>
+            <p>Twitter: <a href="https://twitter.com/allianceacademy">@AllianceAcademy</a></p>
+            <p>LinkedIn: <a href="https://linkedin.com/company/allianceacademy">Alliance Academy</a></p>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 Alliance Academy for Innovation</p>
+    </footer>
+</body>
+</html>
